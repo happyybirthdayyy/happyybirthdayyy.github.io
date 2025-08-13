@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun</title>
+<style>
+:root {
+    --primary: #40a8f0;
+    --secondary: #87cefa;
+    --accent: #ffd700;
+    --dark: #1e3a8a;
+    --light: #e6f2ff;
+}
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Neue', cursive;}
+body {
+    background: linear-gradient(135deg, var(--light), var(--secondary));
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="%2340a8f0" opacity="0.3"/><circle cx="50" cy="50" r="2" fill="%2340a8f0" opacity="0.3"/><circle cx="80" cy="30" r="4" fill="%2340a8f0" opacity="0.3"/><circle cx="30" cy="70" r="3" fill="%2340a8f0" opacity="0.3"/><circle cx="70" cy="80" r="2" fill="%2340a8f0" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    animation: moveBg 15s linear infinite;
+    min-height: 100vh; 
+    color: var(--dark);
+    overflow-x: hidden;
+}
+.container {max-width: 900px; margin: auto; padding: 2rem;}
+header {text-align: center; margin-bottom: 2rem; animation: fadeIn 1s ease forwards;}
+h1 {font-size: 3rem; text-shadow: 2px 2px 0 var(--accent); min-height: 60px;}
+.name-badge {
+    background: var(--accent); padding: .5rem 2rem; border-radius: 50px;
+    display: inline-block; font-size: 1.5rem; font-weight: bold;
+    animation: bounce 1s infinite alternate;
+}
+.birthday-card {
+    background: white; border-radius: 20px; padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); border: 3px dashed var(--accent);
+    animation: fadeInUp 1.2s ease forwards;
+}
+.photo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem;
+}
+.photo-item {
+    height: 150px; border-radius: 15px; overflow: hidden;
+    transform: scale(0.8); opacity: 0;
+    animation: zoomIn 0.8s forwards;
+    cursor: pointer;
+}
+.photo-item:nth-child(1) {animation-delay: 0.2s;}
+.photo-item:nth-child(2) {animation-delay: 0.4s;}
+.photo-item:nth-child(3) {animation-delay: 0.6s;}
+.photo-item:nth-child(4) {animation-delay: 0.8s;}
+.photo-item:nth-child(5) {animation-delay: 1s;}
+.photo-item:nth-child(6) {animation-delay: 1.2s;}
+.photo-item img {width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;}
+.photo-item:hover img {transform: scale(1.1);}
+.message {line-height: 1.6; text-align: center; animation: fadeIn 2s ease forwards;}
+.highlight {background: var(--accent); padding: 0 .4rem; border-radius: 5px;}
+@media (max-width: 768px) {
+    h1 {font-size: 2rem;}
+    .photo-grid {grid-template-columns: repeat(2, 1fr);}
+}
+
+/* Animasi CSS */
+@keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
+@keyframes fadeInUp {0%{opacity:0; transform: translateY(20px);}100%{opacity:1; transform: translateY(0);}}
+@keyframes zoomIn {0%{opacity:0; transform: scale(0.8);}100%{opacity:1; transform: scale(1);}}
+@keyframes bounce {0%{transform: translateY(0);}100%{transform: translateY(-10px);}}
+@keyframes moveBg {0%{background-position:0 0;}100%{background-position:100px 100px;}}
+
+/* Efek pop foto */
+.pop {
+    animation: popAnim 0.4s ease;
+}
+@keyframes popAnim {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 id="typewriter"></h1>
+        <div class="name-badge">DHEA ESA AGUSTI</div>
+    </header>
+    <div class="birthday-card">
+        <div class="photo-grid">
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0009.jpg" alt="Foto 1"></div>
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0010.jpg" alt="Foto 2"></div>
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0011.jpg" alt="Foto 3"></div>
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0002.jpg" alt="Foto 4"></div>
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0001.jpg" alt="Foto 5"></div>
+            <div class="photo-item"><img src="fav/IMG-20240831-WA0003.jpg" alt="Foto 6"></div>
+        </div>
+        <div class="message">
+            <p>selamat ulang tahun perempuan cantik, perempuan baik, perempuan manis, perempuan yang selalu aku tunggu ceritanya setiap malam.
+			semoga tahun ini bisa jadi lebih baik dari tahun sebelumnya yaa.
+            semoga panjang umur, sehat selalu, dan semoga kamu selalu dikelilingi sama orang orang baik yaa.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Efek typewriter
+const text = "SELAMAT ULANG TAHUN";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+    }
+}
+typeWriter();
+
+// Efek pop foto saat diklik
+document.querySelectorAll(".photo-item img").forEach(img => {
+    img.addEventListener("click", () => {
+        img.classList.add("pop");
+        setTimeout(() => img.classList.remove("pop"), 400);
+    });
+});
+</script>
+</body>
+</html>
