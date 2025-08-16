@@ -135,6 +135,33 @@ h1 {font-size: 3rem; text-shadow: 2px 2px 0 var(--accent); min-height: 60px;}
 .photo-item:hover img {transform: scale(1.1);}
 .message {line-height: 1.6; text-align: center; animation: fadeIn 2s ease forwards;}
 .highlight {background: var(--accent); padding: 0 .4rem; border-radius: 5px;}
+
+/* Tombol Musik Lucu */
+.cute-button {
+    display: block;
+    margin: 2rem auto 0 auto;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff8fab, #fcd34d, #4ade80, #60a5fa, #c084fc);
+    background-size: 300% 300%;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    animation: rainbowFlow 4s linear infinite, bounce 1.5s infinite;
+    transition: transform 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.cute-button:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 @media (max-width: 768px) {
     h1 {font-size: 2rem;}
     .photo-grid {grid-template-columns: repeat(2, 1fr);}
@@ -171,7 +198,7 @@ h1 {font-size: 3rem; text-shadow: 2px 2px 0 var(--accent); min-height: 60px;}
 
                 <!-- Minggu 1 -->
                 <div></div><div></div><div></div><div></div>
-                <div></div> <!-- kosong sampai Kamis -->
+                <div></div>
                 <div class="date">1</div>
                 <div class="date">2</div>
 
@@ -230,11 +257,17 @@ h1 {font-size: 3rem; text-shadow: 2px 2px 0 var(--accent); min-height: 60px;}
         <div class="message">
             <p>Selamat bertambah usia perempuan cantik, perempuan baik, perempuan manis, perempuan yang selalu aku tunggu ceritanya setiap malam.
             Semoga panjang umur, sehat selalu, menjadi pribadi yang lebih baik dan selalu dikelilingi sama orang-orang yang baik juga yaa. 
-			Semoga apa yang kamu impikan semuanya bisa terwujud yaa dan semoga di hari yang spesial ini menjadi awal dari banyak hal baik yang belum pernah kamu bayangin sebelumnyaa.<br><br>
-			SELAMAT ULANG TAHUN DEYY.</p>
+            Semoga apa yang kamu impikan semuanya bisa terwujud yaa dan semoga di hari yang spesial ini menjadi awal dari banyak hal baik yang belum pernah kamu bayangin sebelumnyaa.<br><br>
+            SELAMAT ULANG TAHUN DEYY.</p>
         </div>
+
+        <!-- Tombol Musik Lucu -->
+        <button class="cute-button" onclick="toggleMusic()" id="music-btn">🎵 Putar Musik</button>
     </div>
 </div>
+
+<!-- Musik -->
+<audio id="bg-music" src="lagu.m4a"></audio>
 
 <script>
 // Efek typewriter
@@ -256,6 +289,22 @@ document.querySelectorAll(".photo-item img").forEach(img => {
         setTimeout(() => img.classList.remove("pop"), 400);
     });
 });
+
+// Fungsi Play/Pause Musik
+function toggleMusic(){
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+
+    if(music.paused){
+        music.volume = 0.5;
+        //music.currentTime = 25;
+        music.play();
+        btn.innerText = "⏸️ Pause Musik";
+    } else {
+        music.pause();
+        btn.innerText = "🎵 Putar Musik";
+    }
+}
 </script>
 </body>
 </html>
