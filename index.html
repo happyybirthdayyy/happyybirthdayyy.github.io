@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pibesdeyy</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #7b0f14;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  color: white;
+}
+
+/* container */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* title */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* subtitle */
+.subtitle {
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+/* divider */
+.line {
+  width: 60px;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+  margin: 25px auto;
+}
+
+/* heart */
+.heart {
+  margin: 30px auto;
+  width: clamp(80px, 25vw, 120px);
+  opacity: 0.9;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+/* YES */
+.yes {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: white;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yes:hover {
+  opacity: 0.7;
+}
+
+/* NO */
+.no {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  pointer-events: none;
+  cursor: default;
+}
+
+#page1, #page2, #page3 {
+  display: none;
+}
+
+/* page 2 */
+.hidden {
+  display: none;
+}
+
+.final h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+}
+
+.final p {
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* animasi */
+.fade {
+  animation: fade 0.8s ease;
+}
+
+/* TITLE PAGE 2 */
+.gift-title {
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* subtitle tambahan */
+.gift-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* ICONS */
+.icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 12px;
+}
+
+/* ICON CARD */
+.icon {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+  animation: floatUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.icon:nth-child(1) { animation-delay: 0.2s; }
+.icon:nth-child(2) { animation-delay: 0.4s; }
+.icon:nth-child(3) { animation-delay: 0.6s; }
+.icon:nth-child(4) { animation-delay: 0.8s; }
+
+.icon img {
+  width: clamp(45px, 12vw, 60px);
+  height: clamp(45px, 12vw, 60px);
+  filter: brightness(0) invert(1);
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.icon img:hover {
+  transform: scale(1.2);
+}
+
+/* BACK BUTTON */
+.back-btn {
+  margin-top: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* PAGE 3 */
+.birthday-page {
+  background: #7b0f14;
+  position: relative;
+  overflow: hidden;
+}
+
+.birthday-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  margin-bottom: 10px;
+}
+
+.birthday-sub {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+/* PHOTO WALL */
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* POLAROID */
+.polaroid {
+  width: 100%;
+  background: white;
+  padding: 10px 10px 20px 10px;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.polaroid img {
+  width: 100%;
+  height: clamp(120px, 30vw, 160px);
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.polaroid:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+.polaroid:nth-child(1) { transform: rotate(-2deg); }
+.polaroid:nth-child(2) { transform: rotate(2deg); }
+.polaroid:nth-child(3) { transform: rotate(1deg); }
+.polaroid:nth-child(4) { transform: rotate(-1deg); }
+
+/* animasi */
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* =========================
+   EXTRA MOBILE (kecil banget)
+   ========================= */
+@media (max-width: 400px) {
+
+  h1 {
+    letter-spacing: 1px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .icons {
+    flex-direction: column;
+  }
+
+  .photo-wall {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="container fade" id="page1">
+  <h1>HI, LOVE!</h1>
+
+  <div class="subtitle">
+    DO YOU WANT TO SEE A LITTLE SURPRISE FOR YOU?
+  </div>
+
+  <div class="line"></div>
+
+  <svg class="heart" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="1.5">
+    <path d="M50 80
+             C20 60, 10 40, 25 25
+             C35 15, 50 25, 50 35
+             C50 25, 65 15, 75 25
+             C90 40, 80 60, 50 80Z"/>
+  </svg>
+
+  <div class="buttons">
+    <button class="yes" onclick="goNext()">YES!!</button>
+    <button class="no" id="noBtn">NO THANKS</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container hidden fade" id="page2">
+
+  <h1 class="gift-title">
+    THESE ARE FOR YOU
+  </h1>
+
+  <div class="gift-sub">
+    little things that remind me of you
+  </div>
+
+  <div class="icons">
+
+    <div class="icon" onclick="openCameraPage()">
+      <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png">
+    </div>
+
+    <div class="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/727/727218.png">
+    </div>
+
+    <div class="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png">
+    </div>
+
+  </div>
+
+  <div class="back-btn" onclick="goBack()">← BACK</div>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="container hidden fade birthday-page" id="page3">
+
+  <h1 class="birthday-title">Happy Birthday</h1>
+
+  <div class="birthday-sub">
+    a collection of memories with you
+  </div>
+
+  <div class="photo-wall">
+
+    <div class="polaroid rotate1">
+      <img src="https://picsum.photos/200?1">
+    </div>
+
+    <div class="polaroid rotate2">
+      <img src="https://picsum.photos/200?2">
+    </div>
+
+    <div class="polaroid rotate3">
+      <img src="https://picsum.photos/200?3">
+    </div>
+
+    <div class="polaroid rotate4">
+      <img src="https://picsum.photos/200?4">
+    </div>
+
+  </div>
+
+  <div class="back-btn" onclick="backToPage2()">← BACK</div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const savedPage = localStorage.getItem("page") || "page1";
+
+  document.getElementById(savedPage).style.display = "block";
+});
+
+function showPage(pageId) {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "none";
+
+  document.getElementById(pageId).style.display = "block";
+
+  localStorage.setItem("page", pageId);
+}
+
+function goNext() {
+  showPage("page2");
+}
+
+function goBack() {
+  showPage("page1");
+}
+
+function openCameraPage() {
+  showPage("page3");
+}
+
+function backToPage2() {
+  showPage("page2");
+}
+</script>
+
+</body>
+</html>
