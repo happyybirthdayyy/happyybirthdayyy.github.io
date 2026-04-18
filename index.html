@@ -154,7 +154,7 @@ h1 {
   padding: 10px 10px 20px 10px;
   border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .polaroid img {
@@ -165,15 +165,29 @@ h1 {
   display: block;
 }
 
-.polaroid:hover {
-  transform: scale(1.08);
-  z-index: 10;
+.polaroid video {
+  width: 100%;
+  height: clamp(120px, 30vw, 160px);
+  object-fit: cover;
+  border-radius: 6px;
 }
 
-.polaroid:nth-child(1) { transform: rotate(-2deg); }
-.polaroid:nth-child(2) { transform: rotate(2deg); }
-.polaroid:nth-child(3) { transform: rotate(1deg); }
-.polaroid:nth-child(4) { transform: rotate(-1deg); }
+.polaroid:hover {
+  transform: scale(1.1) rotate(0deg);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.polaroid:nth-child(1)  { transform: rotate(-3deg); }
+.polaroid:nth-child(2)  { transform: rotate(2deg); }
+.polaroid:nth-child(3)  { transform: rotate(1deg); }
+.polaroid:nth-child(4)  { transform: rotate(-2deg); }
+.polaroid:nth-child(5)  { transform: rotate(4deg); }
+.polaroid:nth-child(6)  { transform: rotate(-4deg); }
+.polaroid:nth-child(7)  { transform: rotate(2.5deg); }
+.polaroid:nth-child(8)  { transform: rotate(-1.5deg); }
+.polaroid:nth-child(9)  { transform: rotate(3deg); }
+.polaroid:nth-child(10) { transform: rotate(-3.5deg); }
 
 @keyframes fade {
   from {opacity:0; transform: translateY(10px);}
@@ -256,11 +270,27 @@ h1 {
   </div>
 
   <div class="photo-wall">
-    <div class="polaroid"><img src="https://picsum.photos/200?1"></div>
-    <div class="polaroid"><img src="https://picsum.photos/200?2"></div>
-    <div class="polaroid"><img src="https://picsum.photos/200?3"></div>
-    <div class="polaroid"><img src="https://picsum.photos/200?4"></div>
-  </div>
+    <div class="polaroid"><img src="1.jpeg"></div>
+    <div class="polaroid"><img src="2.jpeg"></div>
+    <div class="polaroid"><img src="3.jpeg"></div>
+    <div class="polaroid"><img src="4.jpeg"></div>
+    <div class="polaroid">
+    <video autoplay loop muted playsinline>
+        <source src="1.mp4" type="video/mp4">
+    </video>
+    </div>
+
+    <div class="polaroid">
+    <video autoplay loop muted playsinline>
+        <source src="2.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="polaroid"><img src="5.jpeg"></div>
+    <div class="polaroid"><img src="6.jpeg"></div>
+    <div class="polaroid"><img src="7.jpeg"></div>
+    <div class="polaroid"><img src="8.jpeg"></div>
+
+    </div>
 
   <div class="buttons dual">
     <button class="nav-btn" onclick="goBack()">← BACK</button>
