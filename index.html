@@ -30,7 +30,7 @@ body {
   color: white;
   overflow-x: hidden;
   font-family: 'DM Sans', sans-serif;
-  cursor: none;
+  cursor: auto;
 }
 
 /* ── CUSTOM CURSOR ── */
@@ -58,6 +58,11 @@ body {
   transform: translate(-50%,-50%);
 }
 body:hover .cursor { opacity: 1; }
+
+.cursor,
+.cursor-ring {
+  display: none !important;
+}
 
 /* ── GRAIN OVERLAY ── */
 body::before {
